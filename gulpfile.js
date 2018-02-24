@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     del = require('del'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    cache = require('gulp-cache');
+    cache = require('gulp-cache'),
+    autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('myTask',function(){
 	console.log('hello I am a task');
@@ -18,6 +19,7 @@ gulp.task('myTask',function(){
 gulp.task('sass',function(){
 	return gulp.src('app/sass/*.sass')// берем файл исходник (и сразу его возвращаем)
 	.pipe(sass())// выполняем команду нашего плагина
+  .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true}))
 	.pipe(gulp.dest('app/css'))// выводим результат(указываем только папки!)
   //Тестовый вызов: в консоли gulp sass (выполняем gulp.task('sass'...))
 	//Результат: видим что стили появились в css/main.css
