@@ -57,6 +57,12 @@ gulp.task('clean', function(){
   // при выполнении gulp clean папка dist удаляется.
 });
 
+// таск для очистки кэша
+gulp.task('clear', function(){
+  // будем вручную запускать при необходимости очистки кэша
+  return cache.clearAll();
+});
+
 // таск обработки изображений
 gulp.task('img', function(){
   return gulp.src('app/img/**/*')
