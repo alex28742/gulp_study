@@ -1,0 +1,17 @@
+div {
+  background: lightgreen;
+  width: 250px;
+  height: 150px;
+  margin: 15px;
+  border: 1px solid gray;
+  box-shadow: 5px 5px 5px gray;
+  border-radius: 10px;
+  padding: 10px; }
+
+body {
+  font-size: 1.5em;
+  padding: 5px;
+  background: lightblue; }
+  body div {
+    color: green;
+    font-size: 1.5em; }
