@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     imagemin = require('gulp-imagemin'),
-    pngquant = require('imagemin-pngquant');
+    pngquant = require('imagemin-pngquant'),
+    cache = require('gulp-cache');
 
 gulp.task('myTask',function(){
 	console.log('hello I am a task');
@@ -60,13 +61,13 @@ gulp.task('clean', function(){
 gulp.task('img', function(){
   return gulp.src('app/img/**/*')
   // дальше производим сжатие.. imagemin имеет параметры {....}
-  .pipe(imagemin({
+  .pipe(cache(imagemin({
     // параметры
     interlaced: true,
     progressive: true,
     svgoPlugins: [{removeViewBox: false}], // для работы с svg
     use: [pngquant()]
-  }))
+  })))
   // выгружаем
   .pipe(gulp.dest('dist/img'));
 });
